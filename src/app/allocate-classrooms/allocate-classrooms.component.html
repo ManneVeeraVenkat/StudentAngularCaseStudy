@@ -1,0 +1,17 @@
+<!-- your-component.component.html -->
+
+<div>
+    <h2>Allocate Classroom</h2>
+    <form [formGroup]="allocationForm" (ngSubmit)="onSubmit()">
+      <label for="teacherId">Teacher:</label>
+      <select id="teacherId" formControlName="teacherId" required>
+        <option *ngFor="let teacher of teachers" [value]="teacher.teacherId">{{ teacher.firstName }} {{ teacher.lastName }}</option>
+      </select>
+  
+      <label for="classroomId">Classroom:</label>
+      <select id="classroomId" formControlName="classroomId" required>
+        <option *ngFor="let classroom of classrooms" [value]="classroom.classroomId">{{ classroom.classroomName }}</option>
+      </select>
+  
+      <button type="submit" [disabled]="!allocationForm.valid">Allocate Classroom</button>
+  
